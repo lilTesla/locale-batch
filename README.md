@@ -10,8 +10,9 @@ before using:
 to use:
 rightclick on node.exe shortcut and click "run as administrator" (requieres * step above)
 
-OR
+or
 
 set the command line location to your repo's location and run "node index.js" command
+
 ---------------------------------------------------------
 *You can also go to shortcut's properties -> advanced -> and check "run as administrator" to skip rightclicking and use double click instead
