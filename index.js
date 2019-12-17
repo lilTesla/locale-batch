@@ -1,5 +1,7 @@
 const serverConfigLocation = "C:\\Flowfinity\\FlowfinityActions\\config\\config.xml";
 const webConfigLocation = "C:\\Users\\daniel\\source\\repos\\default\\Web\\Web.config";
+const actionsService = "FAS0";
+const serverService = "FWP0";
 const xml2js = require('xml2js');
 const builder = new xml2js.Builder();
 const fs = require("fs");
@@ -30,24 +32,24 @@ fs.readFile(serverConfigLocation, "utf-8", (err, data) => {
                     if (!err) {
                         console.log("Written");
                         console.log("Stopping Flowfinity Actions");
-                        childProc.exec('net stop FAS0', function (err) {
+                        childProc.exec('net stop ' + actionsService, function (err) {
                             if (!err) {
                                 console.log("Flowfinity Actions stopped");
                                 console.log("Stopping Flowfinity Server");
-                                childProc.exec('net stop FWP0', function (err) {
+                                childProc.exec('net stop ' + serverService, function (err) {
                                     if (!err) {
                                         console.log("Flowfinity Server stopped");
                                         console.log("Starting Flowfinity Server");
-                                        childProc.exec('net start FWP0', function (err) {
+                                        childProc.exec('net start ' + serverService, function (err) {
                                             if (!err){
                                                 console.log("Flowfinity Server started");
                                                 console.log("Starting Flowfinity Actions");
-                                                childProc.exec('net start FAS0', function (err) {
+                                                childProc.exec('net start ' + actionsService, function (err) {
                                                     if (!err){
                                                         console.log("Flowfinity Actions started");
                                                         console.log("Touching Web.config");
                                                         try {
-                                                            let time = new Date();
+                                                            const time = new Date();
                                                             fs.utimesSync(webConfigLocation, time, time);
                                                             console.log('everything is ok!!!');
                                                             prompt.get(['Danissimo krasava?']);
