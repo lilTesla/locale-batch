@@ -54,30 +54,36 @@ fs.readFile(serverConfigLocation, "utf-8", (err, data) => {
                                                         } catch (err) {
                                                             fs.closeSync(fs.openSync(webConfigLocation, 'w'));
                                                             console.log("Touching Web.config error: " + err);
+                                                            prompt.get(['Beda!!!']);
                                                         }
                                                     }
                                                     else{
                                                         console.log('Flowfinity Actions starting error: ' + err);
+                                                        prompt.get(['Beda!!!']);
                                                     }
                                                 });
                                             }
                                             else{
                                                 console.log('Flowfinity Server starting error: ' + err);
+                                                prompt.get(['Beda!!!']);
                                             }
                                         });
                                     }
                                     else{
                                         console.log('Flowfinity Server stopping error: ' + err);
+                                        prompt.get(['Beda!!!']);
                                     }
                                 });
                             }
                             else{
                                 console.log('Flowfinity Actions stopping error: ' + err);
+                                prompt.get(['Beda!!!']);
                             }
                         });
                     }
                     else{
                         console.log("error writing to config.xml")
+                        prompt.get(['Beda!!!']);
                     }
                 });
             });
@@ -85,5 +91,6 @@ fs.readFile(serverConfigLocation, "utf-8", (err, data) => {
     }
     else{
         console.log("error reading config.xml")
+        prompt.get(['Beda!!!']);
     }
 });
